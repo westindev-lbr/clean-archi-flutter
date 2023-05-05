@@ -37,3 +37,6 @@ Data :
 Presentation :
     - Widgets
     - Presentation Logic
+
+### Entities & Use Cases
+
