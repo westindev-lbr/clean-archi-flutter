@@ -1,6 +1,10 @@
-# clean_archi_flutter_app
+<h1 align="center"> Clean Archi Flutter App</h1>
 
-Mise en place clean architecture dans un projet flutter
+<p align="center">Mise en place clean architecture dans un projet flutter</p>
+
+![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
+![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
 ## Getting Started
 
@@ -8,35 +12,54 @@ Mise en place clean architecture dans un projet flutter
 
 ### Structure projet
 
-- Création des dossiers :
-- lib/features -> dosser contenant toutes les modules de l'application
-- lib/features/number_trivia -> module d'application représentant une fonctionnalité principale
-- lib/features/number_trivia/(data, domain, presentation) -> 3 couches de la clean architecture
-- lib/core ->
-- presentation/bloc ->
-- presentation/pages
-- presentation/widgets -> widgets que nous ne voulons pas directement dans la page pour éviter l'encombrement de l'UI
-- domain/entities ->
-- domain/repositories -> Interface (classe abstraite) des repositories
-- domain/usecases -> Classe concrète des cas d'utilisation de l'application
-- data/datasources ->
-- data/models -> Model Data
-- data/repositories -> Implémentation concrète des repositories
+```shell
+├── lib
+│   ├── core
+│   │   └── error
+│   │       └── failures.dart
+│   ├── features
+│   │   └── number_trivia
+│   │       ├── data
+│   │       │   ├── datasources
+│   │       │   ├── models
+│   │       │   └── repositories
+│   │       ├── domain
+│   │       │   ├── entities
+│   │       │   │   └── number_trivia.dart
+│   │       │   ├── repositories
+│   │       │   │   └── number_trivia_repository_interface.dart
+│   │       │   └── usecases
+│   │       │       └── get_concrete_number_trivia.dart
+│   │       └── presentation
+│   │           ├── bloc
+│   │           ├── pages
+│   │           └── widgets
+│   └── main.dart
+```
 
-Domain :
-    - Use cases
-    - Entities
-    - Interface Repositories
+- *lib/features -> dosser contenant toutes les modules de l'application*
+- *lib/features/number_trivia -> module d'application représentant une fonctionnalité principale*
+- *lib/features/number_trivia/(data, domain, presentation) -> 3 couches de la clean architecture*
+- *presentation/widgets -> widgets que nous ne voulons pas directement dans la page pour éviter l'encombrement de l'UI*
+- *domain/entities ->*
+- *domain/repositories -> Interface (classe abstraite) des repositories*
+- *domain/usecases -> Classe concrète des cas d'utilisation de l'application*
+- *data/repositories -> Implémentation concrète des repositories*
 
-Data :
-    - Repositories
-    - Models
-    - DataSources
-    - API
+- Domain :
+  - Use cases
+  - Entities
+  - Interface Repositories
 
-Presentation :
-    - Widgets
-    - Presentation Logic
+- Data :
+  - Repositories
+  - Models
+  - DataSources
+  - API
+
+- Presentation :
+  - Widgets
+  - Presentation Logic
 
 ### Installation des dépendances
 
@@ -55,8 +78,17 @@ Création de notre gestion d'erreur en cas d'exception levée
     - core/error/failures.dart -> classe Failure abstraite un peu comme ActionResponse de façon générique
 Création de notre interface Repository : INumberTriviaRepository dans le domain layer
 
-### Tests
+### 🧪 Tests
 
 Création de la structure de dossier dans Test/
 Création de notre 1er fichier test du 1er use case : get_concrete_number_trivia_test.dart
 Création de notre use case pour passer l'érreur de type de notre test
+
+### ❂ Domain Layer Refactoring
+
+Création d'une interface de usecase avec la méthode call : core/usecases/usecase.dart
+Création d'une classe Params pour utiliser des paramètres génériques en overridant la classe
+Refactorisation du test avec la classe Params
+
+Création d'un 2e fichier de test pour le use case : get_random_number_trivia_test.dart
+Création du use case  : GetRandomNumberTrivia avec classe NoParams

@@ -1,5 +1,5 @@
-import 'package:clean_archi_flutter_app/core/error/failures.dart';
-import 'package:clean_archi_flutter_app/features/number_trivia/domain/entities/number_trivia.dart';
+import '../../../../core/error/failures.dart';
+import '../entities/number_trivia.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class INumberTriviaRepository {
