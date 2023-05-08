@@ -99,4 +99,13 @@ Création d'un test de model : number_trivia_model_test.dart
 Création du model pour faire compiler le test
 Le model implémente l'entité
 Création d'un dossier fixtures avec un fichier json représentant des données en format json d'un NumberTriviaModel : trivia.json
-Création de 2 méthodes dans le model pour convertir json et NumberTriviaModel
+Création de 2 méthodes dans le model pour convertir [json <-> NumberTriviaModel]
+
+### Contracts of Data Sources
+
+Création du repository implémentant l'interface INumberTriviaRepository dans notre couche data : data/repositories
+Création d'une interface de NetworkInfo : core/platform/network_info.dart `INetworkInfo`
+Création d'une interface de remoteDataSource : data/datasources/  `INumberTriviaRemoteDataSource`
+Création d'une classe abstraite d'exceptions
+Création d'une interface de localDataSource : `INumberTriviaLocalDataSource`
+Création des membres de NumberTriviaRepository et son constructeur
