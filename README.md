@@ -92,3 +92,11 @@ Refactorisation du test avec la classe Params
 
 Création d'un 2e fichier de test pour le use case : get_random_number_trivia_test.dart
 Création du use case  : GetRandomNumberTrivia avec classe NoParams
+
+### Data Layer & Models
+
+Création d'un test de model : number_trivia_model_test.dart
+Création du model pour faire compiler le test
+Le model implémente l'entité
+Création d'un dossier fixtures avec un fichier json représentant des données en format json d'un NumberTriviaModel : trivia.json
+Création de 2 méthodes dans le model pour convertir json et NumberTriviaModel
