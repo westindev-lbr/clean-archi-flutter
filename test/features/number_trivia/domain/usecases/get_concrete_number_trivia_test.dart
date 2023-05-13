@@ -6,18 +6,17 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-class MockNumberTriviaRepository extends Mock
-    implements INumberTriviaRepository {}
+import 'get_concrete_number_trivia_test.mocks.dart';
 
 @GenerateMocks([INumberTriviaRepository])
 void main() {
   late GetConcreteNumberTrivia usecase;
-  late MockNumberTriviaRepository mockNumberTriviaRepository;
+  late MockINumberTriviaRepository mockNumberTriviaRepository;
   late int tNumber;
   late NumberTrivia tNumberTrivia;
 
   setUp(() {
-    mockNumberTriviaRepository = MockNumberTriviaRepository();
+    mockNumberTriviaRepository = MockINumberTriviaRepository();
     usecase = GetConcreteNumberTrivia(mockNumberTriviaRepository);
     tNumber = 1;
     tNumberTrivia =
