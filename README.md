@@ -144,7 +144,7 @@ Création de 2 méthodes dans le model pour convertir [json <-> NumberTriviaMode
 
 ### 📑 Contracts of Data Sources
 
-Création du repository implémentant l'interface INumberTriviaRepository dans notre couche data : data/repositories
+Création du repository implémentant l'interface `INumberTriviaRepository` dans notre couche data : data/repositories
 Création d'une interface de NetworkInfo : core/platform/network_info.dart `INetworkInfo`
 Création d'une interface de remoteDataSource : data/datasources/  `INumberTriviaRemoteDataSource`
 Création d'une classe abstraite d'exceptions
@@ -158,3 +158,6 @@ Migration en Null-safety
 Refactorisation du code de test et de l'implémentation finale du repository
 
 ## NetWork Info
+
+Ajout dépendance :   internet_connection_checker: ^1.0.0+1
+TDD : sur l'implémantation de NetworkInfo par l'interface INetworkInfo
