@@ -12,24 +12,36 @@
 
 ### Structure projet
 
+> Répertoire LIB :
+
 ```shell
 ├── lib
 │   ├── core
-│   │   └── error
-│   │       └── failures.dart
+│   │   ├── error
+│   │   │   ├── exceptions.dart
+│   │   │   └── failures.dart
+│   │   ├── platform
+│   │   │   └── network_info.dart
+│   │   └── usecases
+│   │       └── usecase.dart
 │   ├── features
 │   │   └── number_trivia
 │   │       ├── data
 │   │       │   ├── datasources
+│   │       │   │   ├── number_trivia_local_datasource.dart
+│   │       │   │   └── number_trivia_remote_datasource.dart
 │   │       │   ├── models
+│   │       │   │   └── number_trivia_model.dart
 │   │       │   └── repositories
+│   │       │       └── number_trivia_repository_impl.dart
 │   │       ├── domain
 │   │       │   ├── entities
 │   │       │   │   └── number_trivia.dart
 │   │       │   ├── repositories
 │   │       │   │   └── number_trivia_repository_interface.dart
 │   │       │   └── usecases
-│   │       │       └── get_concrete_number_trivia.dart
+│   │       │       ├── get_concrete_number_trivia.dart
+│   │       │       └── get_random_number_trivia.dart
 │   │       └── presentation
 │   │           ├── bloc
 │   │           ├── pages
@@ -45,6 +57,35 @@
 - *domain/repositories -> Interface (classe abstraite) des repositories*
 - *domain/usecases -> Classe concrète des cas d'utilisation de l'application*
 - *data/repositories -> Implémentation concrète des repositories*
+
+> Répertoire TEST
+
+```shell
+├── pubspec.lock
+├── pubspec.yaml
+├── test
+│   ├── core
+│   ├── features
+│   │   └── number_trivia
+│   │       ├── data
+│   │       │   ├── models
+│   │       │   │   └── number_trivia_model_test.dart
+│   │       │   └── repositories
+│   │       │       ├── number_trivia_repository_impl_test.dart
+│   │       │       └── number_trivia_repository_impl_test.mocks.dart
+│   │       ├── domain
+│   │       │   └── usecases
+│   │       │       ├── get_concrete_number_trivia_test.dart
+│   │       │       ├── get_concrete_number_trivia_test.mocks.dart
+│   │       │       ├── get_random_number_trivia_test.dart
+│   │       │       └── get_random_number_trivia_test.mocks.dart
+│   │       └── presentation
+│   └── fixtures
+│       ├── fixtures_reader.dart
+│       ├── trivia.json
+│       └── trivia_double.json
+
+```
 
 - Domain :
   - Use cases
@@ -111,3 +152,9 @@ Création d'une interface de localDataSource : `INumberTriviaLocalDataSource`
 Création des membres de NumberTriviaRepository et son constructeur
 
 ## Repository Implementation
+
+Création du test d'implémentation du Repository  totalement en TDD
+Migration en Null-safety
+Refactorisation du code de test et de l'implémentation finale du repository
+
+## NetWork Info
