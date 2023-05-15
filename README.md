@@ -161,3 +161,19 @@ Refactorisation du code de test et de l'implémentation finale du repository
 
 Ajout dépendance :   internet_connection_checker: ^1.0.0+1
 TDD : sur l'implémantation de NetworkInfo par l'interface INetworkInfo
+
+## Local Data Source
+
+Création d'un fichier de test pour implémentation LocalDataSource
+Nous utilisons pour se faire un petit paquet pour android : SharedPreferences(Android) ou NSUserDefaults(IOS)
+Nouvelle fixture car le stockage interne du téléphone utilise un système clé-valeur comme du JSON
+Mise en place des tests et implémentation des méthodes de LocalDataSource
+Utilisatation de constante pour le SharedPreferences
+Utilisation de
+
+```dart
+@GenerateNiceMocks(
+    [MockSpec<SharedPreferences>(onMissingStub: OnMissingStub.returnDefault)])
+```
+
+Qui s'utilise lors de test de méthode non stubées
