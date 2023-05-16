@@ -177,3 +177,7 @@ Utilisation de
 ```
 
 Qui s'utilise lors de test de méthode non stubées
+
+## Remote Data Source
+
+Sensiblement le même procédé
