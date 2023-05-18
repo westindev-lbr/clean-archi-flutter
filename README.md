@@ -239,3 +239,18 @@ Dans notre bloc/State : on représente les états possibles de notre application
         Loading : en cours de chargement de l'application
         Loaded : contient le NumberTrivia à afficher à l'utilisateur
         Error : contient un message d'erreur à afficher à l'utilisateur
+
+### Bloc Implementation 1/2
+
+Comme dit précédemment le bloc contient la logique de présentation suivante :
+Event => Bloc => State
+Notre bloc doit depuis des events les transformer en state et correspondre aux scénarios utilisateur (User Story)
+Naturellement notre bloc inclus de ce fait nos **uses cases** ainsi qu'une méthode util InputConverter car nous
+savons que notre use case prend en paramètre un entier.
+
+bloc.add() (de bloc)
+await untilCalled() (de mockito)
+async*
+yield
+.fold() (de dartz)
+on<T>() ()
