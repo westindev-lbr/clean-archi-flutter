@@ -20,7 +20,7 @@
 │   │   ├── error
 │   │   │   ├── exceptions.dart
 │   │   │   └── failures.dart
-│   │   ├── platform
+│   │   ├── network
 │   │   │   └── network_info.dart
 │   │   └── usecases
 │   │       └── usecase.dart
@@ -44,6 +44,9 @@
 │   │       │       └── get_random_number_trivia.dart
 │   │       └── presentation
 │   │           ├── bloc
+│   │           │   ├── number_trivia_bloc.dart
+│   │           │   ├── number_trivia_event.dart
+│   │           │   └── number_trivia_state.dart
 │   │           ├── pages
 │   │           └── widgets
 │   └── main.dart
@@ -181,3 +184,58 @@ Qui s'utilise lors de test de méthode non stubées
 ## Remote Data Source
 
 Sensiblement le même procédé
+
+## 🎨 Presentation Layer
+
+### Bloc Scaffolding & Input Conversion
+
+Installation de Bloc extension vs code
+Clic-droit dossier presentation -> Bloc: new bloc
+Nommer au nom du projet
+Nouveau dossier bloc ajouté avec des fichiers configurés :
+
+```shell
+ └── presentation
+│   │           ├── bloc
+│   │           │   ├── number_trivia_bloc.dart
+│   │           │   ├── number_trivia_event.dart
+│   │           │   └── number_trivia_state.dart
+│   │           ├── pages
+│   │           └── widgets
+```
+
+number_trivia_bloc.dart
+number_trivia_event.dart
+number_trivia_state.dart
+
+B.L.O.C => Business Logic Component but better rename P.L.O.C
+
+Events (envoyé depuis l'UI)
+    => le bloc reçoit les events
+        BLoC (execute les uses cases)
+            => les uses cases retourne des données et sont envoyées au State
+                State => récupères les données et les renvois à l'UI
+
+Exemple Event :
+    button click
+    input field
+    actions utilisateurs
+
+La réflexion étant que dans notre application il y a un input et 2 boutons
+On reçoit donc à travers l'input une string, et c'est donc là qu'intervient le problème.
+Nous souhaitons des entiers, alors il va nous falloir convertir notre input en int.
+Création de la classe InputConverter et de l'implémentation en TDD
+Ce genre de besoin qui pourrait servir à d'autres parties d'une application
+est a créer dans core/util/
+
+Dans notre bloc/Event : on représente enfaite les actions utilisateurs (Obtenir un NumberTrivia précis, obtenir un NumberTrivia Random)
+Deux classes donc :
+    GetTriviaForConcreteNumber
+    GetTriviaForRandomNumber
+
+Dans notre bloc/State : on représente les états possibles de notre application en fonction des actions et requetes
+    4 Classes :
+        Empty : Etat initial par exemple
+        Loading : en cours de chargement de l'application
+        Loaded : contient le NumberTrivia à afficher à l'utilisateur
+        Error : contient un message d'erreur à afficher à l'utilisateur
