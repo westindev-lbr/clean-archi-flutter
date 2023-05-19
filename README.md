@@ -22,8 +22,10 @@
 │   │   │   └── failures.dart
 │   │   ├── network
 │   │   │   └── network_info.dart
-│   │   └── usecases
-│   │       └── usecase.dart
+│   │   ├── usecases
+│   │   │   └── usecase.dart
+│   │   └── util
+│   │       └── input_converter.dart
 │   ├── features
 │   │   └── number_trivia
 │   │       ├── data
@@ -68,9 +70,20 @@
 ├── pubspec.yaml
 ├── test
 │   ├── core
+│   │   ├── error
+│   │   ├── network
+│   │   │   ├── network_info_test.dart
+│   │   │   └── network_info_test.mocks.dart
+│   │   └── util
+│   │       └── input_converter_test.dart
 │   ├── features
 │   │   └── number_trivia
 │   │       ├── data
+│   │       │   ├── datasources
+│   │       │   │   ├── number_trivia_local_datasource_test.dart
+│   │       │   │   ├── number_trivia_local_datasource_test.mocks.dart
+│   │       │   │   ├── number_trivia_remote_datasource_test.dart
+│   │       │   │   └── number_trivia_remote_datasource_test.mocks.dart
 │   │       │   ├── models
 │   │       │   │   └── number_trivia_model_test.dart
 │   │       │   └── repositories
@@ -83,11 +96,14 @@
 │   │       │       ├── get_random_number_trivia_test.dart
 │   │       │       └── get_random_number_trivia_test.mocks.dart
 │   │       └── presentation
+│   │           └── bloc
+│   │               ├── number_trivia_bloc_test.dart
+│   │               └── number_trivia_bloc_test.mocks.dart
 │   └── fixtures
 │       ├── fixtures_reader.dart
 │       ├── trivia.json
+│       ├── trivia_cached.json
 │       └── trivia_double.json
-
 ```
 
 - Domain :
@@ -254,3 +270,10 @@ async*
 yield
 .fold() (de dartz)
 on<T>() ()
+
+⚠️ Problème avec flutter_bloc et les tests.
+Installation de bloc_test en dev dep
+
+Implémentation Complète BLOC + TDD Bloc_test
+
+## Injection de Dépendances
