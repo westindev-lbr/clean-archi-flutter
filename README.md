@@ -51,6 +51,7 @@
 │   │           │   └── number_trivia_state.dart
 │   │           ├── pages
 │   │           └── widgets
+│   ├── injection_container.dart
 │   └── main.dart
 ```
 
@@ -256,7 +257,7 @@ Dans notre bloc/State : on représente les états possibles de notre application
         Loaded : contient le NumberTrivia à afficher à l'utilisateur
         Error : contient un message d'erreur à afficher à l'utilisateur
 
-### Bloc Implementation 1/2
+### 🧱 Bloc Implementation 1/2
 
 Comme dit précédemment le bloc contient la logique de présentation suivante :
 Event => Bloc => State
@@ -271,9 +272,17 @@ yield
 .fold() (de dartz)
 on<T>() ()
 
+### 🧱 Bloc Implementation 2/2
+
 ⚠️ Problème avec flutter_bloc et les tests.
 Installation de bloc_test en dev dep
-
 Implémentation Complète BLOC + TDD Bloc_test
 
-## Injection de Dépendances
+## 💉 Injection de Dépendances
+
+A l'aide de la lib `get_it`
+Implémentation de notre conteneur d'injection de dépendances : injection_container.dart
+Petite particularité avec SharedPreferences qui retourne une Future.
+Utilisation de `registerFactory()` pour l'instanciation des Bloc car il permet de rendre dynamique
+l'UI à travers les flux d'evenement et changements d'états.
+Le reste des classes sont appelés avec le singleton `registerLazySingleton()`
