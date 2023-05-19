@@ -1,10 +1,12 @@
-<h1 align="center"> Clean Archi Flutter App</h1>
+<h1 align="center"> Clean Archi Flutter App (Null-Safety)</h1>
 
-<p align="center">Mise en place clean architecture dans un projet flutter</p>
+<p align="center">TDD @ clean architecture dans un projet flutter "NumberTrivia"</p>
 
-![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
-![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
-![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+<div align="center">
+<img src="https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)"/>
+<img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white"/>
+<img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/>
+</div>
 
 ## Getting Started
 
@@ -50,7 +52,13 @@
 │   │           │   ├── number_trivia_event.dart
 │   │           │   └── number_trivia_state.dart
 │   │           ├── pages
+│   │           │   └── number_trivia_page.dart
 │   │           └── widgets
+│   │               ├── loading_widget.dart
+│   │               ├── message_display.dart
+│   │               ├── trivia_controls.dart
+│   │               ├── trivia_display.dart
+│   │               └── widgets.dart
 │   ├── injection_container.dart
 │   └── main.dart
 ```
@@ -106,6 +114,10 @@
 │       ├── trivia_cached.json
 │       └── trivia_double.json
 ```
+
+<p align="center">
+<img src="tests%20run.png" width="600px"/>
+</p>
 
 - Domain :
   - Use cases
@@ -267,9 +279,9 @@ savons que notre use case prend en paramètre un entier.
 
 bloc.add() (de bloc)
 await untilCalled() (de mockito)
-async*
+async* (Stream async)
 yield
-.fold() (de dartz)
+.fold() (de dartz : permet de créer 2 branche )
 on<T>() ()
 
 ### 🧱 Bloc Implementation 2/2
@@ -291,3 +303,7 @@ Le reste des classes sont appelés avec le singleton `registerLazySingleton()`
 
 Correction Bloc : Branche fold et await
 Implémentation Page et widgets avec BlocBuilder et gestion des Etats
+
+<p align="center">
+<img src="Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202023-05-19%20at%2021.09.44.png" width="400px"/>
+</p>
