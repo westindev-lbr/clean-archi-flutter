@@ -286,3 +286,5 @@ Petite particularité avec SharedPreferences qui retourne une Future.
 Utilisation de `registerFactory()` pour l'instanciation des Bloc car il permet de rendre dynamique
 l'UI à travers les flux d'evenement et changements d'états.
 Le reste des classes sont appelés avec le singleton `registerLazySingleton()`
+
+## 📱 Interface Utilisateur
