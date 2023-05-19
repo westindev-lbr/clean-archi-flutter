@@ -288,3 +288,6 @@ l'UI à travers les flux d'evenement et changements d'états.
 Le reste des classes sont appelés avec le singleton `registerLazySingleton()`
 
 ## 📱 Interface Utilisateur
+
+Correction Bloc : Branche fold et await
+Implémentation Page et widgets avec BlocBuilder et gestion des Etats

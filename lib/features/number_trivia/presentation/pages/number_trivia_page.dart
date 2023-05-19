@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../injection_container.dart';
+import '../widgets/widgets.dart';
 
 class NumberTriviaPage extends StatelessWidget {
   const NumberTriviaPage({super.key});
@@ -13,7 +14,7 @@ class NumberTriviaPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('NumberTrivia'),
       ),
-      body: buildBody(context),
+      body: SingleChildScrollView(child: buildBody(context)),
     );
   }
 
@@ -27,30 +28,27 @@ class NumberTriviaPage extends StatelessWidget {
             children: <Widget>[
               const SizedBox(height: 10),
               //top half
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 3,
-                child: const Placeholder(),
+              BlocBuilder<NumberTriviaBloc, NumberTriviaState>(
+                builder: (context, state) {
+                  if (state is EmptyState) {
+                    return const MessageDisplay(
+                        message: "Démarrer la recherche!", errOrEmpty: false);
+                  } else if (state is LoadingState) {
+                    return const LoadingWidget();
+                  } else if (state is LoadedState) {
+                    return TriviaDisplay(numberTrivia: state.trivia);
+                  } else if (state is ErrorState) {
+                    return MessageDisplay(
+                      message: state.message,
+                      errOrEmpty: true,
+                    );
+                  }
+                  return const Placeholder();
+                },
               ),
+
               const SizedBox(height: 20),
-              Column(
-                children: [
-                  const Placeholder(
-                    fallbackHeight: 40,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: const [
-                      Expanded(
-                        child: LeftButton(),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(child: RightButton())
-                    ],
-                  )
-                ],
-              )
+              const TriviaControls()
             ],
           ),
         ),
@@ -61,17 +59,6 @@ class NumberTriviaPage extends StatelessWidget {
 
 class RightButton extends StatelessWidget {
   const RightButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder(fallbackHeight: 30);
-  }
-}
-
-class LeftButton extends StatelessWidget {
-  const LeftButton({
     super.key,
   });
 
